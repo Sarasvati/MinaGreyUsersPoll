@@ -32,21 +32,18 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>MinaGrey Users Poll</title>
 <meta content="en-us" http-equiv="Content-Language" />
-        <meta property="fb:app_id" content="269414559829611" /> 
+        <meta property="fb:app_id" content="" /> 
         <meta property="og:type" content="website" /> 
-        <meta property="og:title" content="MinaGrey Users Poll" /> 
-        <meta property="fb:admins" content="nrossini3"/>
+        <meta property="og:title" content=" your username"/>
         <meta property="og:url" content="http://mina-grey.com"/>
-        <meta property="og:description" content="MinaGrey is a website for artists, authors, academics, musicians, and free thinkers. It features our Members' Area or a protected area where you can both contribute to this site and use our free marketing services" />
-        <meta property="og:image" content="http://mina-grey.com/MinaGreyStatic.png" />
-		<meta name="keywords" content="minagrey, music, art, literature, poetry, prose, production, publishing, painting, fine art, sign up, promotion, members, academic, science, news" />
-		<meta name="description" content="MinaGrey is a website for artists, authors, academics, musicians, and free thinkers. It features our Members' Area or a protected area where you can both contribute to this site and use our free marketing services" />
+        <meta property="og:description" content="description" />
+        <meta property="og:image" content="some image" />
+		<meta name="keywords" content="keywords" />
+		<meta name="description" content="description again" />
 		<meta name="author" content="Nicla Rossini" />
 		<meta name="copyright" content="Nicla Rossini" />
-	<META HTTP-EQUIV="imagetoolbar" CONTENT="no"/>
-     <META HTTP-EQUIV="Pragma" CONTENT="no-cache"/>
-    <META HTTP-EQUIV="Expires" CONTENT="-1"/>
-    <link rel="icon" href="public_html/favicon.ico"/>
+	
+    <link rel="icon" href="favicon.ico"/>
 
 
 </head>
@@ -100,7 +97,7 @@ $vote = mysqli_real_escape_string($vote);
 //insert into database (connect to database first)
 $add ="insert into someTable values (NULL,'$IP', '$vote', '$NewComment')";
 $ad = $con->query($add) or die ("Oops!".$con->error.__LINE__); //"or die() should die", but we're using it 
-$con->close();
+$con->close(); //close the connection
 } //close if 
 } //close else
 
@@ -108,7 +105,7 @@ $con->close();
 
 ?>
 
-&nbsp;<center>
+<center>
 
 <div>
 <!--this is a simple form -->
@@ -121,7 +118,7 @@ $con->close();
 <br/><br/>
 Add a comment if you wish (optional):<br/>
 <input type="text" name="comment" style="width: 301px; height: 33px"/><br/><br/>
-<input type="submit" name="submit" value ="Push Me!" style="width: 122px; height: 57px"/>
+<input type="submit" name="submit" value ="Push Me!"/>
 </form>
 <br/><br/>
 
