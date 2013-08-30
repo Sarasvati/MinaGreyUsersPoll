@@ -35,7 +35,7 @@
 </head>
 
 <body>
-<center><h1><span class="centerh1"><strong>MinaGrey Users Poll</strong></span></h1></center>
+<center><h1>strong>MinaGrey Users Poll</strong></h1></center>
 
 <? 
 //find the actual IP of users
@@ -62,7 +62,7 @@ if(filter_var($IP, FILTER_VALIDATE_IP)){ //if statement
 
 //check if the IP is already there...
 $stm = "select id from votes where IP = '$IP'";
-$stmn = $con->query($stm) or die ("DB problem."); //"or die() must die", but this is just an example. You should use prepared statements.
+$stmn = $connection->query($stm) or die ("DB problem."); //"or die() must die", but this is just an example. You should use prepared statements.
 
 //check if the query returns at least one row
 if ($stmn->num_rows!=0) {
@@ -74,16 +74,16 @@ if (isset($_POST["submit"])){ //check if someone posted somenthing
 
 //sanitize to prevent injection
 $NewComment= mysqli_real_escape_string($_POST["comment"]);
-$vote=mysqli_real_escape_string($_POST["vote"]);
+$v = $_POST["vote"];
 
 //sanitize to prevent injection
 $vote = filter_var($vote, FILTER_SANITIZE_STRING); 
-$vote = mysqli_real_escape_string($vote); 
+$vote = mysqli_real_escape_string($connection, $vote); //you need to have the connection open.
 
 //insert into database (connect to database first)
 $add ="insert into someTable values (NULL,'$IP', '$vote', '$NewComment')";
-$ad = $con->query($add) or die ("Oops!".$con->error.__LINE__); //"or die() should die", but we're using it 
-$con->close(); //close the connection
+$ad = $connection->query($add) or die ("Oops!".$connection->error.__LINE__); //"or die() should die", but we're using it 
+$connection->close(); //close the connection
 } //close if 
 } //close else
 
@@ -119,7 +119,7 @@ Add a comment if you wish (optional):<br/>
 //connect to database first.
 
 //let's use a prepared statement here
-$stmnt = $con->prepare("select id from sometable where vote = ?");
+$stmnt = $connnection->prepare("select id from sometable where vote = ?");
 $stmnt= bind_param("s", $result); //bind the parameters
 $result = "yes"; //we want all votes that say yes
 $stmnt->execute(); //execute the statement
@@ -133,7 +133,7 @@ echo "<td>&nbsp;</td>"; //print a td for each vote
 
 $stmnt->close(); //close the statement
 
-mysqli_close($con); //close the connection
+mysqli_close($connnection); //close the connection
 ?>
 
 </tr><tr>
@@ -143,7 +143,7 @@ mysqli_close($con); //close the connection
 	//connect to database first.
 
 //let's use a prepared statement here
-$stmnt = $con->prepare("select id from sometable where vote = ?");
+$stmnt = $connection->prepare("select id from sometable where vote = ?");
 $stmnt= bind_param("s", $result); //bind the parameters
 $result = "no"; //we want all votes that say NO
 $stmnt->execute(); //execute the statement
@@ -157,7 +157,7 @@ echo "<td>&nbsp;</td>"; //print a td for each vote
 
 $stmnt->close(); //close the statement
 
-mysqli_close($con); //close the connection
+mysqli_close($connection); //close the connection
 
 
 ?>
