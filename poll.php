@@ -5,7 +5,7 @@
  * Author: Nicla Rossini http://niclarossini.com                                    *
  * This poll was used on MinaGrey http://mina-grey.com                              *
  *                                                                                  *
- *  This program is free software: you can redistribute it and/or modify             *
+ *  This program is free software: you can redistribute it and/or modify            *
  *  it under the terms of the GNU General Public License as published by            *
  *  the Free Software Foundation, either version 3 of the License, or               *
  *  (at your option) any later version.                                             *
@@ -73,7 +73,8 @@ if (isset($_POST["submit"])){ //check if someone posted somenthing
 
 
 //sanitize to prevent injection
-$NewComment= mysqli_real_escape_string($_POST["comment"]);
+$comment = $_POST["comment"];
+$NewComment= mysqli_real_escape_string($connection, $comment);
 $v = $_POST["vote"];
 
 //sanitize to prevent injection
