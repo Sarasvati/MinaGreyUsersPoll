@@ -31,20 +31,6 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>MinaGrey Users Poll</title>
-<meta content="en-us" http-equiv="Content-Language" />
-        <meta property="fb:app_id" content="" /> 
-        <meta property="og:type" content="website" /> 
-        <meta property="og:title" content=" your username"/>
-        <meta property="og:url" content="http://mina-grey.com"/>
-        <meta property="og:description" content="description" />
-        <meta property="og:image" content="some image" />
-		<meta name="keywords" content="keywords" />
-		<meta name="description" content="description again" />
-		<meta name="author" content="Nicla Rossini" />
-		<meta name="copyright" content="Nicla Rossini" />
-	
-    <link rel="icon" href="favicon.ico"/>
-
 
 </head>
 
